@@ -5,6 +5,8 @@ import './App.css';
 import HomePage from './pages/HomePage';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
+import GenListing from './pages/GenListing';
+import SpecListing from './pages/SpecListing';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/" element={<HomePage/>} />
           <Route path="/aboutus" element={<AboutUs/>} />
           <Route path="/contactus" element={<ContactUs/>} />
+          <Route path="/genlisting" element={<GenListing/>}/>
+          <Route path="/speclisting" element={<SpecListing/>}/>
         </Routes>
         <Footer/>
       </div>
