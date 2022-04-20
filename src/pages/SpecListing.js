@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Carouselz from '../components/Carouselz';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, 
+      CardText, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import classnames from 'classnames'
 
 class SpecListing extends Component {
@@ -23,6 +24,11 @@ class SpecListing extends Component {
   render(){
     return (
     <>
+  <Breadcrumb className='mb-n3'>
+            <BreadcrumbItem><a className="text-dark" href="/">Home</a></BreadcrumbItem>
+            <BreadcrumbItem><a className="text-dark" href="/genlisting">Search at Zipcode</a></BreadcrumbItem>
+            <BreadcrumbItem active>Listing</BreadcrumbItem>
+    </Breadcrumb>  
   <section className="property-single nav-arrow-b">
     <div className="container">
       <div className="row justify-content-center">

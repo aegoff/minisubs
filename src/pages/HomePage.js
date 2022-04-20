@@ -12,8 +12,8 @@ function HomePage() {
       </div>
       <>
   <div className="row">
-    <div className="col-xs-10 col-lg-4 mx-auto">
-      <h3 className="text-center mb-5">
+    <div className="col-xs-10 col-sm-8 col-md-6 mx-auto">
+      <h3 className="text-center my-5">
         <u>Our Story</u>
       </h3>
       <div className="float-left mr-2 mb-1" style={{ width: "35%" }}>

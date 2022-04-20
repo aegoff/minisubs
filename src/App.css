@@ -12055,3 +12055,8 @@ cross {
   stroke-linecap: round;
   border-radius: 30px;
 }
+
+.breadcrumb{
+  background-color: var(--bs-primary);
+  color: #000;
+}

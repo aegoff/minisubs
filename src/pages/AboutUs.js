@@ -1,13 +1,19 @@
 import React from 'react';
 import founder from '../img/founder.jpg';
+import {Breadcrumb,BreadcrumbItem} from 'reactstrap';
 
 function AboutUs() {
   return (
     <>
+    <Breadcrumb className='mb-n3'>
+            <BreadcrumbItem><a className="text-dark" href="/">Home</a></BreadcrumbItem>
+            <BreadcrumbItem active >About Us</BreadcrumbItem>
+          </Breadcrumb>
   <div
-    className="container-fluid bg-light mx-auto mb-5 col-12"
+    className="container-fluid bg-light mx-auto py-5 col-12"
     style={{ textAlign: "center" }}>
-    <div className="row my-5 mb-5">
+      
+    <div className="row my-3 mb-5">
       <h3>
         <u>What We Believe</u>
       </h3>
@@ -77,7 +83,7 @@ function AboutUs() {
       </div>
     </div>
   </div>
-  <div className="row mb-5 mx-1">
+  <div className="row mb-5 mx-1 py-5">
     <div className="col-xs-10 col-sm-8 col-md-6 col-xl-4 mx-auto">
       <h3 className="text-center mb-5">
         <u>Our Founder</u>

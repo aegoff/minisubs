@@ -1,6 +1,6 @@
 export const Footer = () => (
     <>
-      <div id="desktop" className="row mt-5">
+      <div id="desktop" className="row">
         <footer
           id="desktop"
           className="bg-secondary col-12 d-flex justify-content-center"
@@ -80,7 +80,7 @@ export const Footer = () => (
           </div>
         </footer>
       </div>
-      <div id="mobile" className="row mt-5">
+      <div id="mobile" className="row">
         <footer
           id="mobile"
           className="bg-secondary col-12 d-flex justify-content-center"

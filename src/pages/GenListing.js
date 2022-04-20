@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import room1 from '../img/room1.jpg';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Card, CardTitle, CardText, Button } from 'reactstrap';
+import { Card, CardTitle, CardText, Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -28,6 +28,11 @@ const responsive = {
 
 function GenListing() {
   return (
+      <>
+    <Breadcrumb className='mb-n3'>
+            <BreadcrumbItem><a className="text-dark" href="/">Home</a></BreadcrumbItem>
+            <BreadcrumbItem active>Search at Zipcode</BreadcrumbItem>
+    </Breadcrumb>
     <div className='container-fluid'>
         <div className='row'>
             <div className='col-md-10 mx-auto my-5 text-center'>
@@ -103,6 +108,7 @@ function GenListing() {
             </div>
         </div>
     </div>
+    </>
   )
 }
 
