@@ -34,7 +34,7 @@ class Header extends React.Component {
     return(
     <>
     <nav className="col-12 navbar navbar-dark bg-info">
-              <Menu noOverlay className="ml-n3 my-n5 pt-n5" customBurgerIcon={ <FontAwesomeIcon className="text-white m-0 p-0" icon={faBars}/>} >
+              <Menu noOverlay className="ml-n3 menu" customBurgerIcon={ <FontAwesomeIcon className="text-white m-0 p-0" icon={faBars}/>} >
                 <a className="menu-item" href="/">
                   Home
                 </a>
@@ -87,14 +87,14 @@ class Header extends React.Component {
             </ModalFooter>
           </Modal>
       <div className="col-xs-9">
-        <a className='btn btn-info' href='/'>
-          <FontAwesomeIcon icon={faHouseUser} />{'  '}
-          <b>MiniSubs</b>
+        <a className='btn btn-info my-3' href='/'>
+          <FontAwesomeIcon className="d-inline-flex" icon={faHouseUser} size="2x"/>{'   '}
+          <h1 className='d-inline-flex text-white'><b>MiniSubs</b></h1>
         </a>
       </div>
       <div className="col-xs-3 my-auto mr-4">
         <button className='btn btn-info' onClick={this.toggleSearch}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <FontAwesomeIcon icon={faMagnifyingGlass} size="xl"/>
         </button>
       </div>   
   </nav>

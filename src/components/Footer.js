@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouseUser } from '@fortawesome/free-solid-svg-icons';
+
 export const Footer = () => (
     <>
       <div id="desktop" className="row">
@@ -29,7 +32,7 @@ export const Footer = () => (
                   className="navbar-brand font-weight-bolder text-white"
                   href="index.html"
                 >
-                  <i className="fa-solid fa-house-user text-white" />
+                  <FontAwesomeIcon className="d-inline-flex" icon={faHouseUser} size="md"/>{'  '}
                   MiniSubs
                 </a>
               </li>
@@ -92,7 +95,7 @@ export const Footer = () => (
                   className="navbar-brand font-weight-bolder text-white"
                   href="index.html"
                 >
-                  <i className="fa-solid fa-house-user text-white" />
+                   <FontAwesomeIcon className="d-inline-flex" icon={faHouseUser} size="md"/>{'  '}
                   MiniSubs
                 </a>
               </li>
