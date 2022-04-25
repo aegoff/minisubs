@@ -1,36 +1,27 @@
-import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { useState } from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Label } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { IoCart } from "react-icons/io5";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faHouseUser } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { slide as Menu } from 'react-burger-menu';
 import ReactSlider from 'react-slider';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loginModal: false,
-      searchModal: false
-    };
-    this.toggleLogin = this.toggleLogin.bind(this);
-    this.toggleSearch = this.toggleSearch.bind(this);
-  }
-
-  toggleLogin() {
-    this.setState({
-      loginModal: !this.state.loginModal
-    });
-  }
-  toggleSearch() {
-    this.setState({
-      searchModal: !this.state.searchModal
-    });
-  }
-
-  render() {
+const Header= ()=>{
+  const [toggleLogin, setToggleLogin] = useState(false);
+  const [toggleSearch, setToggleSearch] = useState(false);
+  const [startDate,setStartDate]=useState(new Date());
+  const [endDate,setEndDate]=useState(new Date());
+  const { quantity } = useSelector((state) => state.cart);
+  let { pathname } = useLocation();
+  pathname=pathname.split("/")[1];
+  const [zip, setZip] = useState('');
+  
     return(
     <>
     <nav className="col-12 navbar navbar-dark bg-info">
@@ -38,25 +29,31 @@ class Header extends React.Component {
                 <a className="menu-item" href="/">
                   Home
                 </a>
-
+                <a className="menu-item" onClick={()=>setToggleLogin(!toggleLogin)}>
+                  Login
+                </a>
+                <a className="menu-item" onClick={()=>setToggleSearch(!toggleSearch)}>
+                  Search By Zipcode
+                </a>
                 <a className="menu-item" href="/aboutus">
                   About Us
                 </a>
-
-                <a className="menu-item" onClick={this.toggleLogin}>
-                  Login
-                </a>
-
                 <a className="menu-item" href="/contactus">
                   Contact Us
                 </a>
               </Menu>
-            <Modal isOpen={this.state.searchModal} toggle={this.toggleSearch}>
-            <ModalHeader toggle={this.toggleSearch}>Search!!!!</ModalHeader>
+            
+            {/*SearchModal*/}
+            <Modal isOpen={toggleSearch} toggle={()=>setToggleSearch(!toggleSearch)}>
+            <ModalHeader toggle={()=>setToggleSearch(!toggleSearch)}>Search on our Site!</ModalHeader>
             <ModalBody>
-              <p>Rent per Month (USD):</p>
+             <Label className="mr-3" htmlFor='zip'>Zipcode:</Label><br></br>
+              <input required onChange={event => setZip(event.target.value)} name="zip" id="zip" type="text" placeholder='Zipcode'/><br></br>
+              <label htmlFor='slider'>Rent per Month (USD):</label>
               <ReactSlider
-                  className="horizontal-slider mr-2"
+                  name="slider"
+                  className="horizontal-slider mr-2 mb-5 py-2"
+                  style={{position: "relative", zIndex:'-5'}}
                   thumbClassName="example-thumb bg-info"
                   trackClassName="example-track"
                   min={100}
@@ -69,21 +66,26 @@ class Header extends React.Component {
                   step={25}
                   minDistance={25}
               />
+               <Label htmlFor='start-date'>Start Date:</Label>
+              <DatePicker className='date-pickers' id="start-date" name="start-date" selected={startDate} onChange={(date) => setStartDate(date)} />
+              <Label htmlFor='end-date'>End Date:</Label>
+              <DatePicker className='date-pickers' id='end-date' name="end-date" selected={endDate} onChange={(date) => setEndDate(date)} />              
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.toggleSearch}>Search</Button>{' '}
-              <Button color="secondary" onClick={this.toggleSearch}>Cancel</Button>
+              <Button color="primary"><a className="reset-a" href={`/listings/${zip}`}>Search</a></Button>{' '}
+              <Button color="secondary" onClick={()=>setToggleSearch(!toggleSearch)}>Cancel</Button>
             </ModalFooter>
             </Modal>   
 
-            <Modal isOpen={this.state.loginModal} toggle={this.toggleLogin}>
-            <ModalHeader toggle={this.toggleLogin}>Login</ModalHeader>
+            {/*LoginModal*/}
+            <Modal isOpen={toggleLogin} toggle={()=>setToggleLogin(!toggleLogin)}>
+            <ModalHeader toggle={()=>setToggleLogin(!toggleLogin)}>Login</ModalHeader>
             <ModalBody>
               Logging in is fun, you know.
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.toggleLogin}>Login</Button>{' '}
-              <Button color="secondary" onClick={this.toggleLogin}>Cancel</Button>
+              <Button color="primary"><a className="reset-a" href="/myaccount">Login</a></Button>{' '}
+              <Button color="secondary" onClick={()=>setToggleLogin(!toggleLogin)}>Cancel</Button>
             </ModalFooter>
           </Modal>
       <div className="col-xs-9">
@@ -92,14 +94,26 @@ class Header extends React.Component {
           <h1 className='d-inline-flex text-white'><b>MiniSubs</b></h1>
         </a>
       </div>
+
+
+      {(pathname === "listings" ||pathname === "listing") && (
+          <div className="col-xs-3 my-auto-mr-4">
+            <Link to="/cart" className="cart">
+              <IoCart className='text-white fa-2x'/>
+              {quantity !== 0 && <span className='text-white'>{quantity}</span>}
+            </Link>
+          </div>
+      )}
+      {(pathname!=="listings" && pathname !== "listing")&&(
       <div className="col-xs-3 my-auto mr-4">
-        <button className='btn btn-info' onClick={this.toggleSearch}>
+        <button className='btn btn-info' onClick={()=>setToggleSearch(!toggleSearch)}>
             <FontAwesomeIcon icon={faMagnifyingGlass} size="xl"/>
         </button>
-      </div>   
+      </div>
+      )}   
   </nav>
   </>
-  );}
+  );
 }
 
 export default Header;

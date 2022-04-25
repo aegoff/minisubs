@@ -1,27 +1,29 @@
-import React, {Component} from 'react';
-import Carouselz from '../components/Carouselz';
+{/* This page is for future versions of the app and will inform the SingleListing.js
+
+import React, {Component, useState} from 'react';
+import Carouselz from '../components/SingleImgCarousel';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, 
       CardText, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import classnames from 'classnames'
+import classnames from 'classnames';
+import room1 from "../img/room1.jpg";
+import room2 from "../img/room2.jpg";
+import room3 from "../img/room3.jpg";
 
-class SpecListing extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-          activeTab: '1'
-        };
-      }
-    
-      toggle(tab) {
-        if (this.state.activeTab !== tab) {
-          this.setState({
-            activeTab: tab
-          });
-        }
-      }
-  render(){
+const items = [
+  {
+    src: `${room1}`,
+  },
+  {
+    src: `${room2}`,
+  },
+  {
+    src: `${room3}`,
+  }
+];
+
+const SpecListing=()=> {
+  const [toggleTab, setToggleTab] = useState('1');
+
     return (
     <>
   <Breadcrumb className='mb-n3'>
@@ -36,7 +38,7 @@ class SpecListing extends Component {
           <h3 className="text-center mt-4">
             Comfy Bedroom in American Colonial Home
           </h3>
-          <Carouselz/>
+          <Carouselz items={items}/>
         </div>
       </div>
       <div className="col-md-8 mx-auto d-flex justify-content-center">
@@ -67,30 +69,30 @@ class SpecListing extends Component {
         <Nav tabs>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '1' })}
-              onClick={() => { this.toggle('1'); }}
+              className={classnames({ active: toggleTab === '1' })}
+              onClick={()=> setToggleTab('1') }
             >
               Quick Summary
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '2' })}
-              onClick={() => { this.toggle('2'); }}
+              className={classnames({ active: toggleTab === '2' })}
+              onClick={()=> setToggleTab('2') }
             >
               Ammenities
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '3' })}
-              onClick={() => { this.toggle('3'); }}
+              className={classnames({ active: toggleTab === '3' })}
+              onClick={()=> setToggleTab('3') }
             >
               Location
             </NavLink>
           </NavItem>
         </Nav>
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent activeTab={toggleTab}>
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
@@ -141,6 +143,5 @@ class SpecListing extends Component {
 
   );
 }
-}
 
-export default SpecListing;
+export default SpecListing;*/}

@@ -1,13 +1,28 @@
 import React from 'react';
 import room9 from '../img/room9.jpg'
-import Carouselz from '../components/Carouselz'
+import Carouselz from '../components/SingleImgCarousel'
+import modern from "../img/modern.jpg";
+import studio from "../img/studio.jpg";
+import living_room from "../img/living_room.jpg";
+
+const items = [
+  {
+    src: `${modern}`,
+  },
+  {
+    src: `${studio}`,
+  },
+  {
+    src: `${living_room}`,
+  }
+];
 
 function HomePage() {
   return (
     <div className='container-fluid'>
       <div className='row'>
         <div className='col-md-8 col-xl-6 mx-auto mt-5 w-5'>
-          <Carouselz/>
+          <Carouselz items={items}/>
         </div>
       </div>
       <>
@@ -204,7 +219,7 @@ function HomePage() {
           {/*Grid row*/}
         </form>
         <div className="text-center">
-          <a className="btn btn-info text-white mb-5">Send</a>
+          <a className="btn btn-info text-white mb-5" href="/">Send</a>
         </div>
         <div className="status" />
       </div>

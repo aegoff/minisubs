@@ -5,26 +5,36 @@ import './App.css';
 import HomePage from './pages/HomePage';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
-import GenListing from './pages/GenListing';
 import SpecListing from './pages/SpecListing';
+import Listings from "./pages/Listings";
+import SingleListing from "./pages/SingleListing";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Error from "./pages/Error";
 import MyAccount from './pages/MyAccount';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header/>
-        <Routes>
-          <Route path="/" element={<HomePage/>} />
-          <Route path="/aboutus" element={<AboutUs/>} />
-          <Route path="/contactus" element={<ContactUs/>} />
-          <Route path="/genlisting" element={<GenListing/>}/>
-          <Route path="/speclisting" element={<SpecListing/>}/>
-          <Route path="/myaccount" element={<MyAccount/>}/>
-        </Routes>
-        <Footer/>
-      </div>
-    </Router>
+      <Router>
+        <div className="App">
+          <Header/>
+          <Routes>
+            <Route path="/" element={<HomePage/>} />
+            <Route path="/aboutus" element={<AboutUs/>} />
+            <Route path="/contactus" element={<ContactUs/>} />
+            <Route path="/speclisting" element={<SpecListing/>}/>
+            <Route path="/myaccount" element={<MyAccount/>}/>
+            <Route path="/listings/:zip" element={<Listings/>} />
+            <Route path="/listing/:zip/:id" element={<SingleListing/>} />
+            <Route path="/cart" element={<Cart/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="*" element={<Error/>} />
+          </Routes>
+          <Footer/>
+        </div>
+      </Router>
   );
 }
 
