@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-import room9 from '../img/room9.jpg'
+import room9 from '../img/room9.jpg';
+import { Container } from 'reactstrap';
 import Carouselz from '../components/SingleImgCarousel'
 import modern from "../img/modern.jpg";
 import studio from "../img/studio.jpg";
@@ -134,7 +135,7 @@ function HomePage() {
   </center>
       <ContactForm/>
     </>
-    </div>
+</div>
   )
 }
 

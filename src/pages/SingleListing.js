@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/reducers/cart";
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import axios from "axios";
-import Loading from "../components/Loading";
 import {rooms} from '../data/rooms';
 import {second_rooms} from '../data/second_rooms';
 import {third_rooms} from '../data/third_rooms';

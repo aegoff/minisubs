@@ -10,8 +10,8 @@ import Listings from "./pages/Listings";
 import SingleListing from "./pages/SingleListing";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 import Error from "./pages/Error";
+import SignUp from './pages/SignUp';
 import MyAccount from './pages/MyAccount';
 
 function App() {
@@ -23,13 +23,13 @@ function App() {
             <Route path="/" element={<HomePage/>} />
             <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="/contactus" element={<ContactUs/>} />
-            <Route path="/speclisting" element={<SpecListing/>}/>
-            <Route path="/myaccount" element={<MyAccount/>}/>
+            <Route path="/myaccount/:username" element={<MyAccount/>}/>
             <Route path="/listings/:zip" element={<Listings/>} />
             <Route path="/listing/:zip/:id" element={<SingleListing/>} />
             <Route path="/cart" element={<Cart/>} />
             <Route path="/login" element={<Login/>} />
-            <Route path="/register" element={<Register/>} />
+            {/*<Route path="/register" element={<Register/>} />*/}
+            <Route path="/signup" element={<SignUp/>}></Route>
             <Route path="*" element={<Error/>} />
           </Routes>
           <Footer/>

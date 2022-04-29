@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Label } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -8,19 +8,15 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faHouseUser } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { slide as Menu } from 'react-burger-menu';
-import ReactSlider from 'react-slider';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { LoginForm } from './LoginForm';
+import {SearchForm} from './SearchForm';
 
 const Header= ()=>{
   const [toggleLogin, setToggleLogin] = useState(false);
   const [toggleSearch, setToggleSearch] = useState(false);
-  const [startDate,setStartDate]=useState(new Date());
-  const [endDate,setEndDate]=useState(new Date());
   const { quantity } = useSelector((state) => state.cart);
   let { pathname } = useLocation();
   pathname=pathname.split("/")[1];
-  const [zip, setZip] = useState('');
   
     return(
     <>
@@ -47,46 +43,16 @@ const Header= ()=>{
             <Modal isOpen={toggleSearch} toggle={()=>setToggleSearch(!toggleSearch)}>
             <ModalHeader toggle={()=>setToggleSearch(!toggleSearch)}>Search on our Site!</ModalHeader>
             <ModalBody>
-             <Label className="mr-3" htmlFor='zip'>Zipcode:</Label><br></br>
-              <input required onChange={event => setZip(event.target.value)} name="zip" id="zip" type="text" placeholder='Zipcode'/><br></br>
-              <label htmlFor='slider'>Rent per Month (USD):</label>
-              <ReactSlider
-                  name="slider"
-                  className="horizontal-slider mr-2 mb-5 py-2"
-                  style={{position: "relative", zIndex:'-5'}}
-                  thumbClassName="example-thumb bg-info"
-                  trackClassName="example-track"
-                  min={100}
-                  max={5000}
-                  defaultValue={[100, 5000]}
-                  ariaLabel={['Lower thumb', 'Upper thumb']}
-                  ariaValuetext={state => `Thumb value ${state.valueNow}`}
-                  renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-                  pearling={false}
-                  step={25}
-                  minDistance={25}
-              />
-               <Label htmlFor='start-date'>Start Date:</Label>
-              <DatePicker className='date-pickers' id="start-date" name="start-date" selected={startDate} onChange={(date) => setStartDate(date)} />
-              <Label htmlFor='end-date'>End Date:</Label>
-              <DatePicker className='date-pickers' id='end-date' name="end-date" selected={endDate} onChange={(date) => setEndDate(date)} />              
+              <SearchForm/>
             </ModalBody>
-            <ModalFooter>
-              <Button color="primary"><a className="reset-a" href={`/listings/${zip}`}>Search</a></Button>{' '}
-              <Button color="secondary" onClick={()=>setToggleSearch(!toggleSearch)}>Cancel</Button>
-            </ModalFooter>
             </Modal>   
 
             {/*LoginModal*/}
             <Modal isOpen={toggleLogin} toggle={()=>setToggleLogin(!toggleLogin)}>
             <ModalHeader toggle={()=>setToggleLogin(!toggleLogin)}>Login</ModalHeader>
             <ModalBody>
-              Logging in is fun, you know.
+              <LoginForm/>
             </ModalBody>
-            <ModalFooter>
-              <Button color="primary"><a className="reset-a" href="/myaccount">Login</a></Button>{' '}
-              <Button color="secondary" onClick={()=>setToggleLogin(!toggleLogin)}>Cancel</Button>
-            </ModalFooter>
           </Modal>
       <div className="col-xs-9">
         <a className='btn btn-info my-3' href='/'>
