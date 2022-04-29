@@ -1,9 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
+import axios from '../axios/axios';
 
 export const LoginForm = ({}) => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail]=useState();
+  const [pw, setPw]=useState();
+  const navigate=useNavigate();
+  let [auth, setAuth]=useState();
+  
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const { data } = await axios.get(
+          'https://fakestoreapi.com/users',
+        );
+        const realUser=data.filter(user=>user.username===username);
+        if (realUser.length===0 ){
+          setAuth(false);
+        }
+        else {
+          setAuth(true);
+          console.log(`User ${username} has been verified`)
+        }
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchUser()
+  });
+  
+  
+  
   const {
     register,
     handleSubmit,
@@ -11,11 +41,12 @@ export const LoginForm = ({}) => {
   } = useForm({
       mode: "onChange"
   });
-  const navigate=useNavigate();
-  const [username, setUsername] = useState('')
+  
   const onSubmit = (data) => {
     console.log(JSON.stringify(data));
-    navigate(`/myaccount/${username}`);
+    if (auth){
+      navigate(`/myaccount/${username}`)
+    }
   };
 
   return (
@@ -48,7 +79,7 @@ export const LoginForm = ({}) => {
                             <label htmlFor="email">Email:</label>
                             <input className="form-control" name="email" id="email"
                                 placeholder="doughjo@hotmail.com"
-                                type="email"
+                                type="email" value={email} onChange={(event)=>setEmail(event.target.value)}
                                 {...register("email",{required:true, pattern: /^\S+@\S+$/i})}
                             />
                                 {errors.email && <p className="text-danger">Please enter a valid email address.</p>}
@@ -58,7 +89,7 @@ export const LoginForm = ({}) => {
                         <div className="md-form my-2">
                         <label htmlFor="pw">Password:</label><br></br>
                         <input className="form-control" name="pw" id="pw"
-                        placeholder="xxxxxxxx"
+                        placeholder="xxxxxxxx" value={pw} onChange={(event)=>setPw(event.target.value)}
                         type="password"
                         {...register("pw",{required:true, minLength:5,maxLength: 50})}
                     />
