@@ -9,6 +9,8 @@ React-datepicker (https://www.npmjs.com/package/react-datepicker)<br>
 React-Multi-Carousel (https://www.npmjs.com/package/react-multi-carousel)<br>
 <br>
 Major Libraries:<br>
+Font Awesome (https://fontawesome.com/)<br>
+React-Icons (https://react-icons.github.io/react-icons/)<br>
 Redux-toolkit (https://redux-toolkit.js.org/)<br>
 React Hook Forms (https://react-hook-form.com/)<br>
 Axios (https://axios-http.com/docs/intro)<br>
