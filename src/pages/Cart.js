@@ -3,7 +3,6 @@ import CartItem from "../components/CartItem";
 import { IoCart } from "react-icons/io5";
 import Marquee from "react-fast-marquee";
 import city from "../img/city.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const Cart = () => {

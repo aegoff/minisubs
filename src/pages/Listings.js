@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Card, CardTitle, CardText, Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import Loading from "../components/Loading";
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import Product from "../components/ListingItem";
 import { useParams } from "react-router-dom";
 import {rooms} from "../data/rooms.js";

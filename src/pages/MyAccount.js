@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { useParams } from "react-router-dom";
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import classnames from 'classnames';
+import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
+//COMING SOON! Used for multi-image-carousel
+/*
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -22,7 +25,7 @@ const responsive = {
     breakpoint: { max: 464, min: 0 },
     items: 1
   }
-};
+}; */
 
 
 function GetUser() {

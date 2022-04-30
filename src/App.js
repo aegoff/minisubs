@@ -5,7 +5,6 @@ import './App.css';
 import HomePage from './pages/HomePage';
 import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
-import SpecListing from './pages/SpecListing';
 import Listings from "./pages/Listings";
 import SingleListing from "./pages/SingleListing";
 import Cart from "./pages/Cart";
@@ -28,7 +27,6 @@ function App() {
             <Route path="/listing/:zip/:id" element={<SingleListing/>} />
             <Route path="/cart" element={<Cart/>} />
             <Route path="/login" element={<Login/>} />
-            {/*<Route path="/register" element={<Register/>} />*/}
             <Route path="/signup" element={<SignUp/>}></Route>
             <Route path="*" element={<Error/>} />
           </Routes>

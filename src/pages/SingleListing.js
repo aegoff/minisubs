@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/reducers/cart";
@@ -8,8 +8,6 @@ import {second_rooms} from '../data/second_rooms';
 import {third_rooms} from '../data/third_rooms';
 
 const SingleListing = () => {
-  const [product, setProduct] = useState({});
-
   const { zip,id } = useParams();
   const dispatch = useDispatch();
   let room;
